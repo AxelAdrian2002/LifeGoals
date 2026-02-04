@@ -25,11 +25,11 @@ COPY --from=build /app/dist/lifegoals/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 # Copy startup script
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 # Expose port (dynamic)
 EXPOSE 80
 
-# Start with custom entrypoint
-ENTRYPOINT ["/docker-entrypoint.sh"]
+# Start with custom script
+CMD ["/start.sh"]
