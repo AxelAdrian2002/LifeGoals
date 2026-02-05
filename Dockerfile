@@ -21,9 +21,6 @@ FROM nginx:alpine
 # Copy the build output to replace the default nginx contents
 COPY --from=build /app/dist/lifegoals/browser /usr/share/nginx/html
 
-# Copy nginx configuration template
-COPY nginx.conf /etc/nginx/templates/default.conf.template
-
 # Copy startup script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
